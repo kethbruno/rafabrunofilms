@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#0a0a0a">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rafa Bruno — Video Editor &amp; Filmmaker</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;500&display=swap');
+
+  :root {
+    --bg: #0a0a0a;
+    --accent: #C41E3A;
+    --cream: #F5F0E8;
+    --muted: #888;
+    --faint: #4a4a4a;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    background: var(--bg);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ---------- Film grain overlay ---------- */
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.038;
+  }
+
+  .grain svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ---------- Hero layout ---------- */
+
+  .hero {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .hero-text {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px clamp(32px, 6vw, 96px);
+  }
+
+  .hero-media {
+    width: 45%;
+    position: relative;
+    background: #1a1a1a;
+    overflow: hidden;
+  }
+
+  .hero-media video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #1a1a1a;
+  }
+
+  .hero-media video.unavailable {
+    display: none;
+  }
+
+  .hero-media .media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.1), rgba(10,10,10,0.7));
+    pointer-events: none;
+  }
+
+  /* ---------- Typography ---------- */
+
+  .name-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2vw, 28px);
+  }
+
+  .accent-line {
+    flex: none;
+    width: 1px;
+    height: 48px;
+    background: var(--accent);
+    opacity: 0;
+  }
+
+  .name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 148px);
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    line-height: 0.9;
+  }
+
+  .name .word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .name .letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .role {
+    margin-top: 16px;
+    font-weight: 300;
+    font-size: clamp(13px, 1.5vw, 17px);
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    opacity: 0;
+  }
+
+  .location {
+    margin-top: 8px;
+    font-weight: 300;
+    font-size: 11px;
+    color: var(--faint);
+    opacity: 0;
+  }
+
+  .cta {
+    margin-top: 28px;
+    align-self: flex-start;
+    background: var(--accent);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 26px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    opacity: 0;
+    transition: background 180ms ease, transform 180ms ease;
+  }
+
+  .cta:hover {
+    background: #a01830;
+    transform: translateY(-2px);
+  }
+
+  .cta:active {
+    transform: translateY(0);
+  }
+
+  /* ---------- Load animations ----------
+     Letter timeline: accent line at 100ms, first letter at 300ms
+     (200ms after the line), 55ms stagger. Last letter (index 8)
+     starts at 740ms and lands at 1340ms. */
+
+  @keyframes letter-in {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  body.loaded .name .letter {
+    animation: letter-in 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(300ms + var(--i) * 55ms);
+  }
+
+  body.loaded .accent-line {
+    animation: fade-in 400ms ease both;
+    animation-delay: 100ms;
+  }
+
+  body.loaded .role {
+    animation: fade-in 500ms ease both;
+    animation-delay: 1340ms;
+  }
+
+  body.loaded .location {
+    animation: fade-in 500ms ease both;
+    animation-delay: 1440ms;
+  }
+
+  body.loaded .cta {
+    animation: fade-in 300ms ease both;
+    animation-delay: 1940ms;
+  }
+
+  /* ---------- Scroll indicator ---------- */
+
+  .scroll-indicator {
+    position: absolute;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 40px;
+    transition: opacity 400ms;
+  }
+
+  .scroll-indicator .track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 40px;
+    margin-left: -0.5px;
+    background: #2a2a2a;
+  }
+
+  .scroll-indicator .dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    animation: scroll-dot 1.6s ease-in-out infinite;
+  }
+
+  @keyframes scroll-dot {
+    from { top: 0; }
+    to   { top: 36px; }
+  }
+
+  .scroll-indicator.hidden {
+    opacity: 0;
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+    }
+
+    .hero-media {
+      order: -1;
+      width: 100%;
+      height: 45vh;
+      flex: none;
+    }
+
+    .hero-text {
+      width: 100%;
+      flex: 1;
+      padding: 40px 24px 72px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body.loaded .name .letter,
+    body.loaded .accent-line,
+    body.loaded .role,
+    body.loaded .location,
+    body.loaded .cta {
+      animation-duration: 1ms;
+      animation-delay: 0ms;
+    }
+
+    .scroll-indicator .dot {
+      animation: none;
+      top: 36px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="name-row">
+        <div class="accent-line"></div>
+        <h1 class="name" aria-label="Rafa Bruno">
+          <span class="word" aria-hidden="true"><span class="letter" style="--i:0">R</span><span class="letter" style="--i:1">A</span><span class="letter" style="--i:2">F</span><span class="letter" style="--i:3">A</span></span>
+          <span class="word" aria-hidden="true"><span class="letter" style="--i:4">B</span><span class="letter" style="--i:5">R</span><span class="letter" style="--i:6">U</span><span class="letter" style="--i:7">N</span><span class="letter" style="--i:8">O</span></span>
+        </h1>
+      </div>
+      <p class="role">Video editor for brands, creators and content teams.</p>
+      <p class="location">Based in Brazil · Available worldwide · Replies within 24h</p>
+      <button class="cta" type="button">Tell me about your project →</button>
+    </div>
+
+    <div class="hero-media">
+      <video autoplay muted loop playsinline
+             poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect width='16' height='16' fill='%231a1a1a'/%3E%3C/svg%3E">
+        <source src="reel.mp4" type="video/mp4">
+      </video>
+      <div class="media-overlay"></div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="track"></div>
+      <div class="dot"></div>
+    </div>
+  </section>
+
+  <div class="grain" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <filter id="grain-filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      </filter>
+      <rect width="100%" height="100%" filter="url(#grain-filter)"/>
+    </svg>
+  </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.body.classList.add('loaded');
+
+    // Hide the video if reel.mp4 is missing — the #1a1a1a
+    // container placeholder shows through instead.
+    var video = document.querySelector('.hero-media video');
+    var source = video.querySelector('source');
+    var hideVideo = function () { video.classList.add('unavailable'); };
+    video.addEventListener('error', hideVideo);
+    source.addEventListener('error', hideVideo);
+
+    var indicator = document.querySelector('.scroll-indicator');
+    window.addEventListener('scroll', function () {
+      indicator.classList.add('hidden');
+    }, { once: true, passive: true });
+  });
+</script>
+</body>
+</html>
