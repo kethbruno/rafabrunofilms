@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rafa Bruno Films - Video Editor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Video editing for brands, creators and content teams who need content that actually gets watched.">
+<link rel="icon" href="assets/rafabruno-logo.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #000;
+    color: #fff;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, summary {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #C4183A;
+  }
+
+  .cta-btn {
+    padding: 14px 36px;
+    background: linear-gradient(135deg, #C4183A 0%, #7A0F1F 100%);
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none;
+    box-shadow: 0 4px 24px rgba(179,14,41,0.3);
+  }
+
+  .cta-btn:hover {
+    background: linear-gradient(135deg, #D4223F 0%, #8C1526 100%);
+    box-shadow: 0 8px 32px rgba(179,14,41,0.45);
+    transform: translateY(-2px);
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  details summary {
+    outline: none;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(196,24,58,0.5);
+  }
+
+  .work-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,0.35);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER/NAV -->
+<header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <img src="assets/rafabruno-logo.png" alt="Rafa Bruno Films" style="height: 40px; width: auto;">
+  </div>
+
+  <nav style="display: flex; gap: 48px; align-items: center;">
+    <a href="#hero" style="font-size: 14px; font-weight: 500; position: relative;">
+      Home
+      <span style="position: absolute; bottom: -8px; left: 0; width: 100%; height: 2px; background: #C4183A;"></span>
+    </a>
+    <a href="#work" style="font-size: 14px; font-weight: 500;">Work</a>
+    <a href="#services" style="font-size: 14px; font-weight: 500;">Services</a>
+    <a href="#about" style="font-size: 14px; font-weight: 500;">About</a>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section id="hero" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; background: #000; z-index: 1;">
+  <video
+    id="hero-video"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6);"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src="assets/reel.mp4" type="video/mp4">
+  </video>
+
+  <div style="position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 20; animation: scrollPulse 2.4s ease-in-out infinite;">
+    <div style="font-size: 12px; color: #aaa; margin-bottom: 8px;">Scroll</div>
+    <div style="font-size: 20px;">↓</div>
+  </div>
+</section>
+
+<!-- SPACER: keeps the fixed hero visible before the next section rises over it -->
+<div style="height: 100vh;"></div>
+
+<!-- INTRO / RISING TEXT OVER PHOTO -->
+<section id="intro" style="position: relative; height: 100vh; min-height: 560px; overflow: hidden; background: #000; z-index: 2; box-shadow: 0 -40px 60px rgba(0,0,0,0.6);">
+  <img src="assets/rafa-camera.jpg" alt="Rafa Bruno operating a camera" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
+  <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 100%);"></div>
+
+  <div id="intro-content" style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; padding: 0 8vw; max-width: 720px; opacity: 0;">
+    <h1 style="font-size: clamp(32px, 5.5vw, 64px); font-weight: 700; line-height: 1.1; margin-bottom: clamp(12px, 3vh, 24px); letter-spacing: -1px;">
+      You've got the footage.<br>
+      I'll make it worth watching.
+    </h1>
+
+    <p style="font-size: clamp(15px, 1.6vw, 18px); color: #ccc; margin-bottom: clamp(16px, 3vh, 32px); max-width: 560px; font-weight: 400;">
+      Video editing for brands and creators who need content that looks polished, moves fast and actually gets watched, without the back-and-forth.
+    </p>
+
+    <p style="font-size: 13px; color: #999; margin-bottom: clamp(24px, 5vh, 48px);">
+      Brazil-based
+    </p>
+
+    <a href="#work" class="cta-btn">
+      Tell me about your project
+      <span style="font-size: 18px;">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section id="work" style="position: relative; z-index: 2; background: #000; padding: 96px 48px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <div style="text-align: center; margin-bottom: 64px;" data-reveal>
+    <h2 style="font-size: 48px; margin-bottom: 16px;">See what I mean</h2>
+    <p style="font-size: 16px; color: #999;">Short-form, branded, long-form, events. Every project is different. The standard isn't.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;" data-reveal-group>
+    <div class="work-card yt-card" data-yt="oJMfnznMAY8" style="background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+      <img src="https://i.ytimg.com/vi/oJMfnznMAY8/hqdefault.jpg" alt="Project 1" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+      <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+          <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+        </div>
+      </div>
+    </div>
+    <div class="work-card yt-card" data-yt="IoPNnZUlp8w" style="background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+      <img src="https://i.ytimg.com/vi/IoPNnZUlp8w/hqdefault.jpg" alt="Project 2" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+      <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+          <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+        </div>
+      </div>
+    </div>
+    <div class="work-card yt-card" data-yt="X94A6d6c1hQ" style="background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+      <img src="https://i.ytimg.com/vi/X94A6d6c1hQ/hqdefault.jpg" alt="Project 3" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+      <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+          <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="position: relative; z-index: 2; background: #0a0a0a; padding: 96px 48px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <div style="text-align: center; margin-bottom: 64px;" data-reveal>
+    <h2 style="font-size: 48px; margin-bottom: 16px;">What I do and why it matters</h2>
+    <p style="font-size: 16px; color: #999;">I don't just edit. I make decisions that save you time, protect your brand and get your content ready to publish without a dozen revision rounds.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;" data-reveal-group>
+    <div class="service-card" style="padding: 32px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+      <h3 style="font-size: 21px; margin-bottom: 12px;">Short-Form Content</h3>
+      <p style="color: #aaa; font-size: 14px; margin-bottom: 16px; flex: 1;">Reels, TikToks and Shorts that stop the scroll. I handle pacing, captions, audio and platform formatting, so you don't have to think about it.</p>
+      <p style="color: #cc4444; font-size: 12px; margin-top: auto;">✦ Platform-optimized · Ready to post</p>
+    </div>
+    <div class="service-card" style="padding: 32px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+      <h3 style="font-size: 21px; margin-bottom: 12px;">Branded & Long-Form</h3>
+      <p style="color: #aaa; font-size: 14px; margin-bottom: 16px; flex: 1;">Interviews, brand films, campaigns and documentaries. Built around your story, your audience and what you actually want people to feel.</p>
+      <p style="color: #cc4444; font-size: 12px; margin-top: auto;">✦ Narrative-driven · On-brand · Broadcast-ready</p>
+    </div>
+    <div class="service-card" style="padding: 32px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+      <h3 style="font-size: 21px; margin-bottom: 12px;">Full Post-Production</h3>
+      <p style="color: #aaa; font-size: 14px; margin-bottom: 16px; flex: 1;">Editing, color grading, sound mixing, subtitles, final delivery. Everything done. Nothing left for you to fix.</p>
+      <p style="color: #cc4444; font-size: 12px; margin-top: auto;">✦ Start to finish · Clean files · Zero loose ends</p>
+    </div>
+    <div class="service-card" style="padding: 32px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+      <h3 style="font-size: 21px; margin-bottom: 12px;">On-Set Support</h3>
+      <p style="color: #aaa; font-size: 14px; margin-bottom: 16px; flex: 1;">Camera, lighting, framing, direction. I make sure the footage arrives at the edit already looking like something.</p>
+      <p style="color: #cc4444; font-size: 12px; margin-top: auto;">✦ Better footage = better final video</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="position: relative; z-index: 2; background: #000; padding: 96px 48px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <div style="max-width: 680px; margin: 0 auto;" data-reveal>
+    <h2 style="font-size: 48px; margin-bottom: 48px; text-align: left;">I started on set, not in a bedroom with a laptop.</h2>
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <p style="color: #ccc; font-size: 16px; line-height: 1.8;">
+        Before I edited professionally, I spent years on productions, learning what breaks on set, why footage fails in post and what actually makes a video work before a single cut is made.
+      </p>
+      <p style="color: #ccc; font-size: 16px; line-height: 1.8;">
+        That background shows up in every project I take on. I don't just cut clips together. I fix problems you didn't know were there, make decisions that protect your deadline and deliver edits that don't need four rounds to land right.
+      </p>
+      <p style="color: #ccc; font-size: 16px; line-height: 1.8;">
+        If you need an editor who gets the brief quickly, communicates without being chased and delivers what he promised, we're going to work well together.
+      </p>
+      <p style="color: #999; font-size: 14px; margin-top: 16px;">
+        Based in Brazil. Available to anyone, anywhere.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT GUIDES MY WORK -->
+<section style="position: relative; z-index: 2; background: #0a0a0a; padding: 96px 48px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <h2 style="font-size: 48px; margin-bottom: 64px; text-align: center;" data-reveal>What you can expect, every single time</h2>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; max-width: 1000px; margin: 0 auto;" data-reveal-group>
+    <div>
+      <h3 style="font-size: 21px; margin-bottom: 12px;">Storytelling</h3>
+      <p style="color: #999; font-size: 14px; line-height: 1.8;">I don't edit randomly. Every cut has a reason: pacing, emotion, attention. I build edits that keep people watching.</p>
+    </div>
+    <div>
+      <h3 style="font-size: 21px; margin-bottom: 12px;">Quality</h3>
+      <p style="color: #999; font-size: 14px; line-height: 1.8;">The details you won't notice until they're missing. I notice them first.</p>
+    </div>
+    <div>
+      <h3 style="font-size: 21px; margin-bottom: 12px;">Communication</h3>
+      <p style="color: #999; font-size: 14px; line-height: 1.8;">You'll always know where your project stands. No disappearing acts. No chasing for updates.</p>
+    </div>
+    <div>
+      <h3 style="font-size: 21px; margin-bottom: 12px;">Reliability</h3>
+      <p style="color: #999; font-size: 14px; line-height: 1.8;">I set realistic timelines and I hit them. If something changes, I tell you before it becomes your problem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="position: relative; z-index: 2; background: #000; padding: 96px 48px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <h2 style="font-size: 48px; margin-bottom: 64px; text-align: center;" data-reveal>Common Questions</h2>
+  <div style="max-width: 800px; margin: 0 auto;" data-reveal-group>
+    <details style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+      <summary style="font-size: 16px; font-weight: 600;">What type of videos do you edit?</summary>
+      <p style="color: #999; margin-top: 16px; font-size: 14px;">Short-form (Reels, TikTok, Shorts), interviews, branded content, podcasts, event videos, documentaries and digital campaigns. If it has footage and a story, I can edit it.</p>
+    </details>
+    <details style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+      <summary style="font-size: 16px; font-weight: 600;">Do you work with international clients?</summary>
+      <p style="color: #999; margin-top: 16px; font-size: 14px;">Yes. And honestly, being based in Brazil is an advantage for you. You get professional-quality work at rates that make sense for your budget, with reliable communication and no corners cut. I'm remote-native, async-friendly and I respond within 24 hours.</p>
+    </details>
+    <details style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+      <summary style="font-size: 16px; font-weight: 600;">Can you edit short-form for Reels, TikTok and Shorts?</summary>
+      <p style="color: #999; margin-top: 16px; font-size: 14px;">It's one of my most requested services. I edit for retention, pacing and platform behavior: captions, sound, aspect ratio, all handled. You just post.</p>
+    </details>
+    <details style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+      <summary style="font-size: 16px; font-weight: 600;">Can you work with footage I already have?</summary>
+      <p style="color: #999; margin-top: 16px; font-size: 14px;">Yes. Most projects start exactly that way. Send your files and a brief. I'll take it from there.</p>
+    </details>
+    <details style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+      <summary style="font-size: 16px; font-weight: 600;">How does the revision process work?</summary>
+      <p style="color: #999; margin-top: 16px; font-size: 14px;">I deliver a first cut, you give me consolidated feedback in one round, and I adjust. Clean, structured, no endless loops. Most clients land on final in two rounds.</p>
+    </details>
+    <details style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+      <summary style="font-size: 16px; font-weight: 600;">How do we start?</summary>
+      <p style="color: #999; margin-top: 16px; font-size: 14px;">Fill out the form below with what you need, your timeline and any references you like. I'll reply within 24 hours with a clear path forward.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="position: relative; z-index: 2; background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%); padding: 96px 48px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+  <div style="margin-bottom: 48px;" data-reveal>
+    <img src="assets/rafabruno-logo.png" alt="Rafa Bruno Films" style="height: 60px; width: auto;">
+  </div>
+  <h2 style="font-size: 48px; margin-bottom: 24px;" data-reveal>Let's make something good.</h2>
+  <p style="font-size: 18px; color: #ccc; margin-bottom: 48px;" data-reveal>Whether you have a full brief or just an idea, I'm easy to work with and straightforward to communicate with. Let's talk.</p>
+  <a href="/cdn-cgi/l/email-protection#ddbeb2b3a9bcbea99dafbcbbbcbfafa8b3b2bbb4b1b0aef3beb2b0" class="cta-btn" style="margin-bottom: 24px;">
+    Tell me about your project
+    <span style="font-size: 18px;">→</span>
+  </a>
+  <p style="font-size: 13px; color: #fff;">No commitment. Just a conversation.</p>
+</section>
+
+<!-- FOOTER -->
+<footer style="position: relative; z-index: 2; background: #000; padding: 48px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+  <p style="color: #777; font-size: 13px; margin-bottom: 24px;">Brazil-based · Available worldwide · Remote-friendly</p>
+  <div style="display: flex; justify-content: center; gap: 48px; margin-bottom: 32px;">
+    <a href="#" style="font-size: 14px; color: #999;">Instagram</a>
+    <a href="#" style="font-size: 14px; color: #999;">YouTube</a>
+    <a href="#" style="font-size: 14px; color: #999;">LinkedIn</a>
+  </div>
+  <p style="color: #888; font-size: 12px;">© 2026 Rafa Bruno Films | Designed & Developed by Zoeh Studio</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function () {
+  document.querySelectorAll('.yt-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var id = card.getAttribute('data-yt');
+      card.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;"></iframe>';
+    }, { once: true });
+  });
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Fade the hero video very slightly as the intro section rises over it
+  function handleScroll() {
+    handleIntroScroll();
+  }
+  window.addEventListener('scroll', handleScroll);
+
+  // Intro section: text rises and fades in as the photo enters view
+  function handleIntroScroll() {
+    var introSection = document.getElementById('intro');
+    var introContent = document.getElementById('intro-content');
+    if (!introSection || !introContent) return;
+
+    var rect = introSection.getBoundingClientRect();
+    var vh = window.innerHeight;
+
+    // progress 0 -> 1 as the section's top travels from the bottom of the viewport to its top
+    var progress = 1 - Math.min(Math.max(rect.top / vh, 0), 1);
+    var eased = progress * progress * (3 - 2 * progress); // smoothstep
+
+    introContent.style.opacity = eased;
+    introContent.style.transform = 'translateY(' + ((1 - eased) * 48) + 'px)';
+  }
+  handleIntroScroll();
+
+  // Scroll reveal
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var ease = 'opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1)';
+    var targets = [];
+
+    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+      targets.push({ el: el, delay: 0 });
+    });
+    document.querySelectorAll('[data-reveal-group]').forEach(function (group) {
+      Array.prototype.forEach.call(group.children, function (child, i) {
+        targets.push({ el: child, delay: i * 90 });
+      });
+    });
+
+    var delayMap = new Map(targets.map(function (t) { return [t.el, t.delay]; }));
+
+    targets.forEach(function (t) {
+      var el = t.el;
+      el._origTransition = el.style.transition || '';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = el._origTransition ? el._origTransition + ', ' + ease : ease;
+      el.style.willChange = 'opacity, transform';
+    });
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          el.style.transitionDelay = (delayMap.get(el) || 0) + 'ms';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          io.unobserve(el);
+
+          var cleanup = function (e) {
+            if (e.propertyName !== 'transform') return;
+            el.style.transform = '';
+            el.style.transition = el._origTransition || '';
+            el.style.transitionDelay = '';
+            el.style.willChange = '';
+            el.removeEventListener('transitionend', cleanup);
+          };
+          el.addEventListener('transitionend', cleanup);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+    targets.forEach(function (t) { io.observe(t.el); });
+  }
+})();
+</script>
+</body>
+</html>
