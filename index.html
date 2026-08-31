@@ -90,7 +90,16 @@
     * { animation: none !important; transition: none !important; }
   }
 
+  #work-track::-webkit-scrollbar { display: none; }
+  .carousel-btn:hover { background: #C4183A; border-color: #C4183A; }
+
+  @media (max-width: 1024px) {
+    #work-track > .yt-card { flex: 0 0 calc(50% - 16px) !important; }
+  }
+
   @media (max-width: 768px) {
+    #work-track > .yt-card { flex: 0 0 88% !important; }
+    .carousel-btn { display: none !important; }
     header { padding: 16px 20px !important; }
     header nav { gap: 20px !important; }
     header nav a { font-size: 12px !important; }
@@ -179,28 +188,60 @@
     <h2 style="font-size: 48px; margin-bottom: 16px;">See what I mean</h2>
     <p style="font-size: 16px; color: #999;">Short-form, branded, long-form, events. Every project is different. The standard isn't.</p>
   </div>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;" data-reveal-group>
-    <div class="work-card yt-card" data-yt="oJMfnznMAY8" style="background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
-      <img src="https://i.ytimg.com/vi/oJMfnznMAY8/hqdefault.jpg" alt="Project 1" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-      <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
-          <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+  <div style="position: relative;" data-reveal>
+    <button class="carousel-btn" data-dir="-1" aria-label="Previous" style="position: absolute; top: 50%; left: -8px; transform: translateY(-50%); z-index: 5; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.7); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s ease, border-color 0.3s ease;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(180deg);"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <button class="carousel-btn" data-dir="1" aria-label="Next" style="position: absolute; top: 50%; right: -8px; transform: translateY(-50%); z-index: 5; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.7); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s ease, border-color 0.3s ease;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(0deg);"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <div id="work-track" style="display: flex; gap: 32px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: 8px; -ms-overflow-style: none; scrollbar-width: none;">
+      <div class="work-card yt-card" data-yt="ht0SAKE6ruU" style="flex: 0 0 calc(33.333% - 21.34px); scroll-snap-align: start; background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+        <img src="https://i.ytimg.com/vi/ht0SAKE6ruU/hqdefault.jpg" alt="Project 1" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+            <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="work-card yt-card" data-yt="IoPNnZUlp8w" style="background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
-      <img src="https://i.ytimg.com/vi/IoPNnZUlp8w/hqdefault.jpg" alt="Project 2" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-      <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
-          <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+      <div class="work-card yt-card" data-yt="aRhYFu7tLqc" style="flex: 0 0 calc(33.333% - 21.34px); scroll-snap-align: start; background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+        <img src="https://i.ytimg.com/vi/aRhYFu7tLqc/hqdefault.jpg" alt="Project 2" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+            <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="work-card yt-card" data-yt="aRhYFu7tLqc" style="background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
-      <img src="https://i.ytimg.com/vi/aRhYFu7tLqc/hqdefault.jpg" alt="Project 3" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-      <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
-        <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
-          <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+      <div class="work-card yt-card" data-yt="IoPNnZUlp8w" style="flex: 0 0 calc(33.333% - 21.34px); scroll-snap-align: start; background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+        <img src="https://i.ytimg.com/vi/IoPNnZUlp8w/hqdefault.jpg" alt="Project 3" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+            <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+          </div>
+        </div>
+      </div>
+      <div class="work-card yt-card" data-yt="oJMfnznMAY8" style="flex: 0 0 calc(33.333% - 21.34px); scroll-snap-align: start; background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+        <img src="https://i.ytimg.com/vi/oJMfnznMAY8/hqdefault.jpg" alt="Project 4" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+            <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+          </div>
+        </div>
+      </div>
+      <div class="work-card yt-card" data-yt="ra8HWdACj9g" style="flex: 0 0 calc(33.333% - 21.34px); scroll-snap-align: start; background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+        <img src="https://i.ytimg.com/vi/ra8HWdACj9g/hqdefault.jpg" alt="Project 5" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+            <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+          </div>
+        </div>
+      </div>
+      <div class="work-card yt-card" data-yt="SLVobtFmDoY" style="flex: 0 0 calc(33.333% - 21.34px); scroll-snap-align: start; background: #1a1a1a; aspect-ratio: 16/9; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;">
+        <img src="https://i.ytimg.com/vi/SLVobtFmDoY/hqdefault.jpg" alt="Project 6" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(196,24,58,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+            <span style="border-style: solid; border-width: 10px 0 10px 16px; border-color: transparent transparent transparent #fff; margin-left: 4px;"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -354,6 +395,17 @@
     el.setAttribute('href', 'mailto:' + addr);
     if (el.getAttribute('data-mail-text')) el.textContent = addr;
   });
+
+  var track = document.getElementById('work-track');
+  if (track) {
+    document.querySelectorAll('.carousel-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var first = track.querySelector('.yt-card');
+        var step = first ? first.getBoundingClientRect().width + 32 : track.clientWidth;
+        track.scrollBy({ left: step * Number(btn.getAttribute('data-dir')), behavior: 'smooth' });
+      });
+    });
+  }
 
   document.querySelectorAll('.yt-card').forEach(function (card) {
     card.addEventListener('click', function () {
